@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lueur Tarot</string>
+
+    <!-- Navigation -->
+    <string name="nav_spread">Расклад</string>
+    <string name="nav_history">История</string>
+    <string name="nav_settings">Настройки</string>
+
+    <!-- Main screen -->
+    <string name="deck_prompt">Нажми для карты</string>
+    <string name="deck_empty">Колода пуста</string>
+    <string name="cards_in_deck">в колоде</string>
+    <string name="cards_in_spread">в раскладе</string>
+    <string name="bottom_card">дно колоды</string>
+    <string name="bottom_card_hide">скрыть</string>
+    <string name="btn_shuffle">Перемешать</string>
+    <string name="btn_new_spread">Новый расклад</string>
+    <string name="empty_spread_hint">Нажми на колоду, чтобы вытащить карту</string>
+    <string name="group_label">Группа %d</string>
+    <string name="columns_label">Столбцы:</string>
+    <string name="groups_label">Группы:</string>
+
+    <!-- History -->
+    <string name="history_title">История раскладов</string>
+    <string name="history_empty">Расклады пока не сохранены</string>
+    <string name="history_clear">Очистить</string>
+    <string name="history_clear_confirm_title">Очистить историю?</string>
+    <string name="history_clear_confirm_body">Все сохранённые расклады будут удалены. Это действие нельзя отменить.</string>
+    <string name="history_clear_confirm_ok">Удалить всё</string>
+    <string name="history_cancel">Отмена</string>
+    <string name="history_cards">карт</string>
+    <string name="history_cols">столбца</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_theme">Стиль карт</string>
+    <string name="theme_lueur">Lueur</string>
+    <string name="theme_lueur_sub">Авторский стиль · Неоновые абстракции · Сияние</string>
+    <string name="theme_classic">Классический</string>
+    <string name="theme_classic_sub">Золото и пергамент · Традиционное таро</string>
+    <string name="settings_language">Язык интерфейса</string>
+    <string name="settings_spread">Расклад</string>
+    <string name="settings_reverse">Перевёрнутые карты</string>
+    <string name="settings_reverse_sub">30% шанс перевёрнутой позиции</string>
+    <string name="settings_energy">Подсказки энергий</string>
+    <string name="settings_energy_sub">Показывать ключевые слова под картами. Отключи для продвинутого режима</string>
+    <string name="settings_history_section">История</string>
+    <string name="settings_save_history">Сохранять историю раскладов</string>
+    <string name="settings_save_history_sub">Каждый расклад сохраняется на устройстве</string>
+    <string name="settings_feel">Ощущения</string>
+    <string name="settings_haptic">Тактильный отклик</string>
+    <string name="settings_haptic_sub">Вибрация при вытягивании карт</string>
+
+    <!-- Card detail -->
+    <string name="detail_direct">Прямая</string>
+    <string name="detail_reversed">Перевёрнутая</string>
+    <string name="detail_reversed_label">ПЕРЕВЁРНУТАЯ</string>
+    <string name="detail_keywords">Ключевые энергии</string>
+    <string name="detail_reversed_energy">Заблокированная или инвертированная энергия: </string>
+    <string name="detail_arcana">Аркан: </string>
+    <string name="arcana_major">Старший Аркан</string>
+    <string name="arcana_cups">Кубки</string>
+    <string name="arcana_wands">Жезлы</string>
+    <string name="arcana_swords">Мечи</string>
+    <string name="arcana_pentacles">Пентакли</string>
+
+    <!-- Remaining deck -->
+    <string name="remaining_title">Оставшиеся карты</string>
+    <string name="remaining_empty">Все карты вытащены</string>
+
+    <!-- About -->
+    <string name="about_text">✦ Lueur Tarot v1.0\nАвторский стиль — ваш собственный\nОткрытый исходный код</string>
+</resources>

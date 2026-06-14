@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lueur Tarot</string>
+
+    <!-- Navigation -->
+    <string name="nav_spread">Tirage</string>
+    <string name="nav_history">Historique</string>
+    <string name="nav_settings">Paramètres</string>
+
+    <!-- Main screen -->
+    <string name="deck_prompt">Appuye pour une carte</string>
+    <string name="deck_empty">Jeu épuisé</string>
+    <string name="cards_in_deck">dans le jeu</string>
+    <string name="cards_in_spread">dans le tirage</string>
+    <string name="bottom_card">fond du jeu</string>
+    <string name="bottom_card_hide">masquer</string>
+    <string name="btn_shuffle">Mélanger</string>
+    <string name="btn_new_spread">Nouveau tirage</string>
+    <string name="empty_spread_hint">Appuye sur le jeu pour tirer une carte</string>
+    <string name="group_label">Groupe %d</string>
+    <string name="columns_label">Colonnes :</string>
+    <string name="groups_label">Groupes :</string>
+
+    <!-- History -->
+    <string name="history_title">Historique des tirages</string>
+    <string name="history_empty">Aucun tirage enregistré</string>
+    <string name="history_clear">Tout effacer</string>
+    <string name="history_clear_confirm_title">Effacer l\'historique ?</string>
+    <string name="history_clear_confirm_body">Tous les tirages enregistrés seront supprimés. Cette action est irréversible.</string>
+    <string name="history_clear_confirm_ok">Tout supprimer</string>
+    <string name="history_cancel">Annuler</string>
+    <string name="history_cards">cartes</string>
+    <string name="history_cols">colonnes</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_theme">Style des cartes</string>
+    <string name="theme_lueur">Lueur</string>
+    <string name="theme_lueur_sub">Style original · Abstractions néon · Lueur</string>
+    <string name="theme_classic">Classique</string>
+    <string name="theme_classic_sub">Or et parchemin · Tarot traditionnel</string>
+    <string name="settings_language">Langue de l\'interface</string>
+    <string name="settings_spread">Tirage</string>
+    <string name="settings_reverse">Cartes inversées</string>
+    <string name="settings_reverse_sub">30% de chance de position inversée</string>
+    <string name="settings_energy">Indices d\'énergie</string>
+    <string name="settings_energy_sub">Afficher les mots-clés sous les cartes. Désactiver pour le mode avancé</string>
+    <string name="settings_history_section">Historique</string>
+    <string name="settings_save_history">Enregistrer les tirages</string>
+    <string name="settings_save_history_sub">Chaque tirage est sauvegardé sur l\'appareil</string>
+    <string name="settings_feel">Sensations</string>
+    <string name="settings_haptic">Retour haptique</string>
+    <string name="settings_haptic_sub">Vibration lors du tirage des cartes</string>
+
+    <!-- Card detail -->
+    <string name="detail_direct">À l\'endroit</string>
+    <string name="detail_reversed">Inversée</string>
+    <string name="detail_reversed_label">INVERSÉE</string>
+    <string name="detail_keywords">Énergies clés</string>
+    <string name="detail_reversed_energy">Énergie bloquée ou inversée : </string>
+    <string name="detail_arcana">Arcane : </string>
+    <string name="arcana_major">Arcane Majeur</string>
+    <string name="arcana_cups">Coupes</string>
+    <string name="arcana_wands">Bâtons</string>
+    <string name="arcana_swords">Épées</string>
+    <string name="arcana_pentacles">Pentacles</string>
+
+    <!-- Remaining deck -->
+    <string name="remaining_title">Cartes restantes</string>
+    <string name="remaining_empty">Toutes les cartes ont été tirées</string>
+
+    <!-- About -->
+    <string name="about_text">✦ Lueur Tarot v1.0\nStyle original — le vôtre\nCode source ouvert</string>
+</resources>

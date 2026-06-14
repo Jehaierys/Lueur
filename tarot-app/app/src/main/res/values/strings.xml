@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lueur Tarot</string>
+
+    <!-- Navigation -->
+    <string name="nav_spread">Spread</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Main screen -->
+    <string name="deck_prompt">Tap for a card</string>
+    <string name="deck_empty">Deck is empty</string>
+    <string name="cards_in_deck">in deck</string>
+    <string name="cards_in_spread">in spread</string>
+    <string name="bottom_card">bottom card</string>
+    <string name="bottom_card_hide">hide</string>
+    <string name="btn_shuffle">Shuffle</string>
+    <string name="btn_new_spread">New Spread</string>
+    <string name="empty_spread_hint">Tap the deck to draw a card</string>
+    <string name="group_label">Group %d</string>
+    <string name="columns_label">Columns:</string>
+    <string name="groups_label">Groups:</string>
+
+    <!-- History -->
+    <string name="history_title">Spread History</string>
+    <string name="history_empty">No spreads saved yet</string>
+    <string name="history_clear">Clear All</string>
+    <string name="history_clear_confirm_title">Clear history?</string>
+    <string name="history_clear_confirm_body">All saved spreads will be deleted. This cannot be undone.</string>
+    <string name="history_clear_confirm_ok">Delete all</string>
+    <string name="history_cancel">Cancel</string>
+    <string name="history_cards">cards</string>
+    <string name="history_cols">columns</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Card Style</string>
+    <string name="theme_lueur">Lueur</string>
+    <string name="theme_lueur_sub">Original style · Neon abstractions · Glow</string>
+    <string name="theme_classic">Classic</string>
+    <string name="theme_classic_sub">Gold and parchment · Traditional tarot</string>
+    <string name="settings_language">Interface Language</string>
+    <string name="settings_spread">Spread</string>
+    <string name="settings_reverse">Reversed cards</string>
+    <string name="settings_reverse_sub" formatted="false">30% chance of reversed position</string>
+    <string name="settings_energy">Energy hints</string>
+    <string name="settings_energy_sub">Show keywords below cards. Disable for advanced mode</string>
+    <string name="settings_history_section">History</string>
+    <string name="settings_save_history">Save spread history</string>
+    <string name="settings_save_history_sub">Each spread is saved on the device</string>
+    <string name="settings_feel">Feel</string>
+    <string name="settings_haptic">Haptic feedback</string>
+    <string name="settings_haptic_sub">Vibration when drawing cards</string>
+
+    <!-- Card detail -->
+    <string name="detail_direct">Upright</string>
+    <string name="detail_reversed">Reversed</string>
+    <string name="detail_reversed_label">REVERSED</string>
+    <string name="detail_keywords">Key energies</string>
+    <string name="detail_reversed_energy">Blocked or inverted energy: </string>
+    <string name="detail_arcana">Arcana: </string>
+    <string name="arcana_major">Major Arcana</string>
+    <string name="arcana_cups">Cups</string>
+    <string name="arcana_wands">Wands</string>
+    <string name="arcana_swords">Swords</string>
+    <string name="arcana_pentacles">Pentacles</string>
+
+    <!-- Remaining deck -->
+    <string name="remaining_title">Remaining Cards</string>
+    <string name="remaining_empty">All cards drawn</string>
+
+    <!-- About -->
+    <string name="about_text">✦ Lueur Tarot v1.0\nOriginal style — your own\nOpen source</string>
+</resources>
