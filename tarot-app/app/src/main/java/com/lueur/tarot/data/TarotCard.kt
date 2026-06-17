@@ -1,6 +1,7 @@
 package com.lueur.tarot.data
 
 import java.util.UUID
+import kotlin.toString
 
 enum class Arcana { MAJOR, CUPS, WANDS, SWORDS, PENTACLES }
 enum class CardOrientation { UPRIGHT, REVERSED }
@@ -31,7 +32,9 @@ data class Spread(
     val id: String = UUID.randomUUID().toString(),
     val createdAtMs: Long = System.currentTimeMillis(),
     val cards: List<DrawnCard>,
-    val note: String = "",
+    val gridCols: Int = 3,
+    val label: String = "",
+    val note: String = ""
 )
 
 object TarotDeck {

@@ -76,11 +76,25 @@ class HistoryRepository(private val context: Context) {
         val createdAtMs: Long,
         val cards: List<DrawnCardJson>,
         val gridCols: Int,
+        val label: String,
         val note: String,
     ) {
-        fun toSpread() = Spread(id, createdAtMs, cards.map { it.toDrawnCard() }, gridCols, note)
+        fun toSpread() = Spread(
+            id = id,
+            createdAtMs = createdAtMs,
+            cards = cards.map { it.toDrawnCard() },
+            gridCols = gridCols,
+            label = label,
+            note = note
+        )
         companion object {
-            fun fromSpread(s: Spread) = SpreadJson(s.id, s.createdAtMs, s.cards.map { DrawnCardJson.from(it) }, s.gridCols, s.note)
+            fun fromSpread(s: Spread) = SpreadJson(
+                s.id,
+                s.createdAtMs,
+                s.cards.map { DrawnCardJson.from(it) },
+                s.gridCols,
+                s.label,
+                s.note)
         }
     }
 }
