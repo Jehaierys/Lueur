@@ -12,10 +12,14 @@ import androidx.compose.ui.draw.*
 import androidx.compose.ui.geometry.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.*
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
+import coil.compose.AsyncImage
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.lueur.tarot.data.*
 import com.lueur.tarot.ui.theme.*
 import kotlin.math.*
@@ -57,7 +61,6 @@ fun TarotCardFace(
             modifier = modifier
                 .width(if (isCompact) CARD_WIDTH * 0.85f else CARD_WIDTH)
                 .height(if (isCompact) CARD_HEIGHT * 0.85f else CARD_HEIGHT)
-                .graphicsLayer { rotationZ = if (isReversed) 180f else 0f }
                 .clip(RoundedCornerShape(CARD_RADIUS))
                 .background(theme.cardFront)
                 .border(1.5.dp, arcanaColor.copy(alpha = if (theme.isNoir) 0.9f else 0.6f),
@@ -65,10 +68,18 @@ fun TarotCardFace(
                 .clickable { onClick() },
             contentAlignment = Alignment.Center,
         ) {
-            when {
-                theme.isNoir  -> NoirCardFaceCanvas(drawn.card, arcanaColor)
-                theme.isLueur -> LueurCardFaceCanvas(drawn.card, arcanaColor)
-                else          -> ClassicCardFaceCanvas(drawn.card, arcanaColor)
+            // #2: rotate only art canvas, not the text overlay
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer { rotationZ = if (isReversed) 180f else 0f },
+            ) {
+                when {
+                    theme.isNoir  -> NoirCardFaceCanvas(drawn.card, arcanaColor)
+                    theme.isLueur -> LueurCardFaceCanvas(drawn.card, arcanaColor)
+                    // Classic canvas (parchment)
+                    else          -> ClassicCardFaceCanvas(drawn.card, arcanaColor)
+                }
             }
 
             // Labels overlay
@@ -464,6 +475,30 @@ private fun ClassicCardFaceCanvas(card: TarotCard, accentColor: Color) {
     }
 }
 
+// ─── Waite SVG card face (inline in card grid) ───────────────────────────────
+@Composable
+private fun WaiteSvgFace(card: TarotCard) {
+    val ctx   = androidx.compose.ui.platform.LocalContext.current
+    val resId = remember(card.svgAsset) {
+        ctx.resources.getIdentifier(card.svgAsset, "raw", ctx.packageName)
+    }
+    if (resId != 0) {
+        coil.compose.AsyncImage(
+            model = coil.request.ImageRequest.Builder(ctx)
+                .data("android.resource://${ctx.packageName}/$resId")
+                .decoderFactory(coil.decode.SvgDecoder.Factory())
+                .crossfade(true)
+                .build(),
+            contentDescription = card.nameEn,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+        )
+    } else {
+        // fallback — classic canvas
+        ClassicCardFaceCanvas(card, Color(0xFFD4AF37))
+    }
+}
+
 // ─── Card back ────────────────────────────────────────────────────────────────
 @Composable
 fun TarotCardBack(
@@ -577,22 +612,21 @@ private fun ClassicCardBackCanvas(theme: TarotThemeColors) {
 @Composable
 fun EnergyHintChip(card: TarotCard, theme: TarotThemeColors, modifier: Modifier = Modifier) {
     val color = arcanaColor(card, theme)
+    // #5: strictly one line — use width constraint + show only first 2 keywords
+    val displayKw = card.keywords.take(2).joinToString("  ")
     Surface(
-        modifier = modifier,
+        modifier = modifier.widthIn(max = CARD_WIDTH * 0.85f),
         color  = color.copy(alpha = 0.12f),
         shape  = RoundedCornerShape(20.dp),
         border = BorderStroke(0.5.dp, color.copy(alpha = 0.35f)),
     ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            card.keywords.take(2).forEach { kw ->
-                Text(kw, style = MaterialTheme.typography.labelSmall.copy(
-                    color = color, fontSize = 9.sp))
-            }
-        }
+        androidx.compose.material3.Text(
+            text     = displayKw,
+            style    = MaterialTheme.typography.labelSmall.copy(color = color, fontSize = 8.sp),
+            maxLines = 1,
+            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp),
+        )
     }
 }
 

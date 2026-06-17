@@ -8,13 +8,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
+import coil.compose.AsyncImage
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.lueur.tarot.data.*
 import com.lueur.tarot.ui.components.*
 import com.lueur.tarot.ui.theme.*
@@ -24,21 +27,36 @@ import com.lueur.tarot.ui.theme.*
 fun CardDetailSheet(
     drawn: DrawnCard,
     theme: TarotThemeColors,
+    language: AppLanguage,   // #3: current language
+    cardTheme: CardTheme,
     onDismiss: () -> Unit,
 ) {
-    val card = drawn.card
+    val card       = drawn.card
     val isReversed = drawn.orientation == CardOrientation.REVERSED
-    val arcanaColor = when (card.arcana) {
-        Arcana.MAJOR     -> theme.majorColor
-        Arcana.CUPS      -> theme.cupsColor
-        Arcana.WANDS     -> theme.wandsColor
-        Arcana.SWORDS    -> theme.swordsColor
-        Arcana.PENTACLES -> theme.pentaclesColor
+    val arcanaColor = arcanaColor(card, theme)
+
+    // #3: name only in current language
+    val cardName = when (language) {
+        AppLanguage.FR -> card.nameFr
+        AppLanguage.EN -> card.nameEn
+        else           -> card.nameRu
+    }
+    val energyText = when (language) {
+        AppLanguage.FR -> card.energyFr
+        AppLanguage.EN -> card.energyEn
+        else           -> card.energyRu
+    }
+    val arcanaLabel = when (card.arcana) {
+        Arcana.MAJOR     -> when (language) { AppLanguage.FR -> "Arcane Majeur"; AppLanguage.EN -> "Major Arcana"; else -> "Старший Аркан" }
+        Arcana.CUPS      -> when (language) { AppLanguage.FR -> "Coupes";        AppLanguage.EN -> "Cups";         else -> "Кубки" }
+        Arcana.WANDS     -> when (language) { AppLanguage.FR -> "Bâtons";        AppLanguage.EN -> "Wands";        else -> "Жезлы" }
+        Arcana.SWORDS    -> when (language) { AppLanguage.FR -> "Épées";         AppLanguage.EN -> "Swords";       else -> "Мечи" }
+        Arcana.PENTACLES -> when (language) { AppLanguage.FR -> "Pentacles";     AppLanguage.EN -> "Pentacles";    else -> "Пентакли" }
     }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        containerColor = theme.surfaceVariant,
+        containerColor   = theme.surfaceVariant,
         dragHandle = {
             Box(
                 modifier = Modifier
@@ -54,7 +72,7 @@ fun CardDetailSheet(
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp)
-                .padding(bottom = 32.dp),
+                .padding(bottom = 40.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Close
@@ -63,71 +81,70 @@ fun CardDetailSheet(
                 horizontalArrangement = Arrangement.End,
             ) {
                 IconButton(onClick = onDismiss) {
-                    Icon(Icons.Default.Close, contentDescription = "Закрыть", tint = theme.textSecondary)
+                    Icon(Icons.Default.Close, null, tint = theme.textSecondary)
                 }
             }
 
-            // Card visual (large)
-            TarotCardFace(
-                drawn = drawn,
-                theme = theme,
-                modifier = Modifier.size(width = CARD_WIDTH * 1.6f, height = CARD_HEIGHT * 1.6f),
-                showEnergyHint = false,
-                onClick = {},
-            )
+            // ── Card visual ─────────────────────────────────────────────────
+            // #8: show SVG for Waite theme; canvas for others
+            if (cardTheme == CardTheme.WAITE) {
+                WaiteCardImage(
+                    svgAsset = card.svgAsset,
+                    modifier = Modifier
+                        .size(width = CARD_WIDTH * 1.7f, height = CARD_HEIGHT * 1.7f)
+                        .clip(RoundedCornerShape(CARD_RADIUS)),
+                )
+            } else {
+                TarotCardFace(
+                    drawn  = drawn,
+                    theme  = theme,
+                    modifier = Modifier.size(width = CARD_WIDTH * 1.7f, height = CARD_HEIGHT * 1.7f),
+                    showEnergyHint = false,
+                    onClick = {},
+                )
+            }
 
             Spacer(Modifier.height(20.dp))
 
-            // Card name
+            // #3: Only current-language name
             Text(
-                text = card.nameRu,
+                text  = cardName,
                 style = MaterialTheme.typography.headlineMedium.copy(
-                    color = arcanaColor,
+                    color     = arcanaColor,
                     textAlign = TextAlign.Center,
                 )
             )
             if (isReversed) {
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "ПЕРЕВЁРНУТАЯ",
+                    text  = when (language) { AppLanguage.FR -> "INVERSÉE"; AppLanguage.EN -> "REVERSED"; else -> "ПЕРЕВЁРНУТАЯ" },
                     style = MaterialTheme.typography.labelSmall.copy(
-                        color = theme.reversed,
-                        letterSpacing = 2.sp,
+                        color = theme.reversed, letterSpacing = 2.sp
                     )
                 )
             }
 
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = "${card.nameFr}  ·  ${card.nameEn}",
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    color = theme.textSecondary,
-                    textAlign = TextAlign.Center,
-                )
-            )
-
             Spacer(Modifier.height(16.dp))
-            HorizontalDivider(color = theme.divider)
+            Divider(color = theme.divider)
             Spacer(Modifier.height(16.dp))
 
-            // Keywords
-            Text(
-                text = "Ключевые энергии",
-                style = MaterialTheme.typography.titleMedium.copy(color = theme.textSecondary),
-            )
+            // Keywords (#1: 5-7 keywords, single row wraps)
+            val kwLabel = when (language) { AppLanguage.FR -> "Énergies clés"; AppLanguage.EN -> "Key energies"; else -> "Ключевые энергии" }
+            Text(kwLabel, style = MaterialTheme.typography.titleMedium.copy(color = theme.textSecondary))
             Spacer(Modifier.height(8.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.fillMaxWidth(),
+            // #5: keywords in a wrap row
+            com.google.accompanist.flowlayout.FlowRow(
+                mainAxisSpacing = 6.dp,
+                crossAxisSpacing = 6.dp,
             ) {
                 card.keywords.forEach { kw ->
                     Surface(
-                        color = arcanaColor.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(20.dp),
+                        color  = arcanaColor.copy(alpha = 0.10f),
+                        shape  = RoundedCornerShape(20.dp),
                         border = ButtonDefaults.outlinedButtonBorder,
                     ) {
                         Text(
-                            text = kw,
+                            text  = kw,
                             style = MaterialTheme.typography.labelSmall.copy(color = arcanaColor),
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
                         )
@@ -137,42 +154,55 @@ fun CardDetailSheet(
 
             Spacer(Modifier.height(16.dp))
 
-            // Energy description
-            EnergyBlock(
-                label = "Прямая",
-                text = card.energyRu,
-                color = theme.upright,
-                theme = theme,
-            )
+            // Energy description (#1: full paragraph)
+            EnergyBlock(label = when (language) { AppLanguage.FR -> "À l'endroit"; AppLanguage.EN -> "Upright"; else -> "Прямая" },
+                text = energyText, color = theme.upright, theme = theme)
 
             if (isReversed) {
                 Spacer(Modifier.height(8.dp))
+                val revPrefix = when (language) {
+                    AppLanguage.FR -> "Énergie bloquée ou inversée: "
+                    AppLanguage.EN -> "Blocked or inverted energy: "
+                    else           -> "Заблокированная или инвертированная энергия: "
+                }
                 EnergyBlock(
-                    label = "Перевёрнутая",
-                    text = "Заблокированная или инвертированная энергия: ${card.energyRu.lowercase()}",
+                    label = when (language) { AppLanguage.FR -> "Inversée"; AppLanguage.EN -> "Reversed"; else -> "Перевёрнутая" },
+                    text  = revPrefix + energyText.replaceFirstChar { it.lowercase() },
                     color = theme.reversed,
                     theme = theme,
                 )
             }
 
             Spacer(Modifier.height(16.dp))
-            HorizontalDivider(color = theme.divider)
-            Spacer(Modifier.height(12.dp))
+            Divider(color = theme.divider)
+            Spacer(Modifier.height(10.dp))
 
-            // Arcana info
-            val arcanaLabel = when (card.arcana) {
-                Arcana.MAJOR     -> "Старший Аркан"
-                Arcana.CUPS      -> "Кубки"
-                Arcana.WANDS     -> "Жезлы"
-                Arcana.SWORDS    -> "Мечи"
-                Arcana.PENTACLES -> "Пентакли"
-            }
             Text(
-                text = "Аркан: $arcanaLabel  ·  ${card.numberLabel}",
-                style = MaterialTheme.typography.labelSmall.copy(color = theme.textSecondary.copy(alpha = 0.6f)),
+                text  = "$arcanaLabel · ${card.numberLabel}",
+                style = MaterialTheme.typography.labelSmall.copy(
+                    color = theme.textSecondary.copy(alpha = 0.5f)
+                ),
             )
         }
     }
+}
+
+// ── Waite SVG card image ──────────────────────────────────────────────────────
+@Composable
+fun WaiteCardImage(svgAsset: String, modifier: Modifier = Modifier) {
+    val ctx = LocalContext.current
+    val resId = remember(svgAsset) {
+        ctx.resources.getIdentifier(svgAsset, "raw", ctx.packageName)
+    }
+    AsyncImage(
+        model = ImageRequest.Builder(ctx)
+            .data("android.resource://${ctx.packageName}/$resId")
+            .decoderFactory(SvgDecoder.Factory())
+            .crossfade(true)
+            .build(),
+        contentDescription = svgAsset,
+        modifier = modifier,
+    )
 }
 
 @Composable
@@ -185,17 +215,16 @@ private fun EnergyBlock(label: String, text: String, color: Color, theme: TarotT
             .padding(12.dp),
     ) {
         Text(
-            text = label.uppercase(),
+            text  = label.uppercase(),
             style = MaterialTheme.typography.labelSmall.copy(
-                color = color,
-                letterSpacing = 1.5.sp,
+                color = color, letterSpacing = 1.5.sp
             )
         )
         Spacer(Modifier.height(6.dp))
         Text(
-            text = text,
+            text  = text,
             style = MaterialTheme.typography.bodyMedium.copy(
-                color = theme.textPrimary.copy(alpha = 0.85f),
+                color = theme.textPrimary.copy(alpha = 0.85f)
             )
         )
     }

@@ -53,5 +53,9 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.gson)
     implementation(libs.kotlinx.coroutines.android)
+    // SVG rendering
+    implementation(libs.coil.compose)
+    implementation(libs.coil.svg)
+    implementation(libs.accompanist.flowlayout)
     debugImplementation(libs.androidx.ui.tooling)
 }

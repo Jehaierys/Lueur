@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Alacrity-inspired icon: radial rose glow, orbital rings, bright core -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer diffuse glow ring 1 -->
+    <path
+        android:pathData="M54,54 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"
+        android:strokeColor="#30FF4081"
+        android:strokeWidth="4"
+        android:fillColor="#00000000"/>
+
+    <!-- Outer diffuse glow ring 2 -->
+    <path
+        android:pathData="M54,54 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0"
+        android:strokeColor="#50FF4081"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"/>
+
+    <!-- Orbital ring 1 (tilted ellipse) -->
+    <path
+        android:pathData="M54,54 m-30,-8 a30,16 0 1,0 60,16 a30,16 0 1,0 -60,-16"
+        android:strokeColor="#80FF4081"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"/>
+
+    <!-- Orbital ring 2 (different tilt) -->
+    <path
+        android:pathData="M54,54 m-8,-28 a16,30 0 1,0 16,60 a16,30 0 1,0 -16,-60"
+        android:strokeColor="#70FFFF00"
+        android:strokeWidth="1.2"
+        android:fillColor="#00000000"/>
+
+    <!-- Radial rays (8 spokes, rose) -->
+    <path android:pathData="M54,54 L54,12" android:strokeColor="#60FF4081" android:strokeWidth="1.2" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L84,24" android:strokeColor="#50FF4081" android:strokeWidth="1.0" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L96,54" android:strokeColor="#60FF4081" android:strokeWidth="1.2" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L84,84" android:strokeColor="#50FF4081" android:strokeWidth="1.0" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L54,96" android:strokeColor="#60FF4081" android:strokeWidth="1.2" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L24,84" android:strokeColor="#50FF4081" android:strokeWidth="1.0" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L12,54" android:strokeColor="#60FF4081" android:strokeWidth="1.2" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L24,24" android:strokeColor="#50FF4081" android:strokeWidth="1.0" android:fillColor="#00000000"/>
+
+    <!-- Yellow accent rays (diagonal) -->
+    <path android:pathData="M54,54 L80,20" android:strokeColor="#40FFFF00" android:strokeWidth="0.8" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L90,72" android:strokeColor="#40FFFF00" android:strokeWidth="0.8" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L28,88" android:strokeColor="#40FFFF00" android:strokeWidth="0.8" android:fillColor="#00000000"/>
+    <path android:pathData="M54,54 L18,36" android:strokeColor="#40FFFF00" android:strokeWidth="0.8" android:fillColor="#00000000"/>
+
+    <!-- Mid glow halo (rose, blurred look via layering) -->
+    <path
+        android:pathData="M54,54 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0"
+        android:fillColor="#25FF4081"/>
+    <path
+        android:pathData="M54,54 m-16,0 a16,16 0 1,0 32,0 a16,16 0 1,0 -32,0"
+        android:fillColor="#35FF4081"/>
+    <path
+        android:pathData="M54,54 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0"
+        android:fillColor="#50FF4081"/>
+    <path
+        android:pathData="M54,54 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0"
+        android:fillColor="#75FF4081"/>
+
+    <!-- Yellow inner core ring -->
+    <path
+        android:pathData="M54,54 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"
+        android:fillColor="#CCFFFF00"/>
+
+    <!-- Bright white-hot center -->
+    <path
+        android:pathData="M54,54 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0"
+        android:fillColor="#FFFFFFFF"/>
+
+    <!-- Small orbiting sparks (lime, red) -->
+    <path android:pathData="M54,26 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" android:fillColor="#CC32CD32"/>
+    <path android:pathData="M82,54 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" android:fillColor="#CCFF0000"/>
+    <path android:pathData="M54,82 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" android:fillColor="#CCFFFF00"/>
+    <path android:pathData="M26,54 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" android:fillColor="#CC32CD32"/>
+
+</vector>

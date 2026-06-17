@@ -216,3 +216,28 @@ val TarotTypography = Typography(
     bodyMedium     = TextStyle(fontSize = 13.sp, lineHeight = 20.sp),
     labelSmall     = TextStyle(fontSize = 10.sp, letterSpacing = 1.2.sp, fontWeight = FontWeight.Medium),
 )
+
+// ─── #8: Unified dark shell theme — used for ALL app UI regardless of card style ──
+// Cards render their own style internally; the app shell is always this.
+val UnifiedDarkTheme = TarotThemeColors(
+    background     = Color(0xFF0A0A0A),   // true near-black, warm
+    surface        = Color(0xFF141414),
+    surfaceVariant = Color(0xFF1C1C1C),
+    cardBack       = Color(0xFF121212),
+    cardFront      = Color(0xFF121212),
+    primary        = Color(0xFFFF4081),   // Rose — dominant accent for UI chrome
+    secondary      = Color(0xFFFFFF00),   // Yellow — secondary
+    accent         = Color(0xFF32CD32),   // Lime
+    highlight      = Color(0xFFFFFF00),
+    textPrimary    = Color(0xFFF0E8E8),   // warm white, no blue
+    textSecondary  = Color(0xFF886060),   // muted warm
+    divider        = Color(0xFF2A1818),
+    reversed       = Color(0xFFFF0000),
+    upright        = Color(0xFF32CD32),
+    cupsColor      = Color(0xFFFF4081),
+    wandsColor     = Color(0xFFFFFF00),
+    swordsColor    = Color(0xFFFF0000),
+    pentaclesColor = Color(0xFF32CD32),
+    majorColor     = Color(0xFFFF4081),
+    isLueur = false, isNoir = true,   // use Noir card renderer by default
+)

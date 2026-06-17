@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8EDD8"/>
+      <stop offset="100%" stop-color="#E8D4A8"/>
+    </linearGradient>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey"/>
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend"/>
+    </filter>
+  </defs>
+  <!-- bg -->
+  <rect width="120" height="200" rx="8" fill="url(#bg)"/>
+  <!-- border double -->
+  <rect x="4" y="4" width="112" height="192" rx="6" fill="none" stroke="#C8A030" stroke-width="1.5"/>
+  <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#C8A030" stroke-width="0.6" opacity="0.6"/>
+  <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="9" font-weight="bold" fill="#C8A030" style="">XX</text>
+  <text x="10" y="25" text-anchor="start" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <text x="110" y="25" text-anchor="end" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <rect x="0" y="15" width="120" height="185" rx="0" fill="#6080B0" stroke="none" stroke-width="1"/>
+  <path d="M20,40 Q60,20 100,40 Q80,55 60,48 Q40,55 20,40 Z" fill="#FEFAF0" stroke="#FEFAF0" stroke-width="0.5"/>
+  <circle cx="60" cy="38" r="8" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M52,42 Q35,50 30,65" fill="none" stroke="#FEFAF0" stroke-width="2"/>
+  <path d="M68,42 Q85,50 90,65" fill="none" stroke="#FEFAF0" stroke-width="2"/>
+  <path d="M60,46 L60,80 Q65,82 72,78" fill="none" stroke="#C8A030" stroke-width="2"/>
+  <path d="M60,80 L56,86 L64,86 L68,80" fill="#C8A030" stroke="#2A1A08" stroke-width="0.5"/>
+  <rect x="68" y="46" width="12" height="20" rx="0" fill="#FEFAF0" stroke="#2A1A08" stroke-width="0.5"/>
+  <line x1="74" y1="49" x2="74" y2="64" stroke="#8B1A1A" stroke-width="2"/>
+  <line x1="68" y1="55" x2="80" y2="55" stroke="#8B1A1A" stroke-width="2"/>
+  <path d="M0,145 Q60,135 120,145 L120,185 L0,185 Z" fill="#1A3A6A" stroke="none" stroke-width="1"/>
+  <path d="M0,140 Q30,132 60,140 Q90,132 120,140" fill="none" stroke="#FEFAF0" stroke-width="1"/>
+  <circle cx="30" cy="138" r="6" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.7"/>
+  <path d="M30,144 L30,165 M24,152 L36,152" fill="none" stroke="#2A1A08" stroke-width="1.2"/>
+  <circle cx="60" cy="132" r="6" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.7"/>
+  <path d="M60,138 L60,160 M54,147 L66,147" fill="none" stroke="#FEFAF0" stroke-width="1.2"/>
+  <circle cx="90" cy="138" r="6" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.7"/>
+  <path d="M90,144 L90,165 M84,152 L96,152" fill="none" stroke="#2A1A08" stroke-width="1.2"/>
+  <path d="M30,152 L22,145 M60,147 L52,138 M90,152 L98,145" fill="none" stroke="#FFD0A0" stroke-width="1.2"/>
+  <text x="60" y="186" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="normal" fill="#2A1A08" style="">JUDGEMENT</text>
+
+</svg>

@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.map
 val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 enum class AppLanguage(val code: String, val label: String) {
-    SYSTEM("system", "System"),
     RU("ru", "Русский"),
     EN("en", "English"),
     FR("fr", "Français");
@@ -25,7 +24,7 @@ enum class GridLayout(val cols: Int, val labelKey: String) {
 }
 
 data class AppSettings(
-    val language: AppLanguage = AppLanguage.SYSTEM,
+    val language: AppLanguage = AppLanguage.RU,
     val cardTheme: CardTheme = CardTheme.NOIR,
     val saveHistory: Boolean = true,
     val showEnergyHints: Boolean = true,   // false = advanced mode
@@ -51,7 +50,7 @@ class SettingsRepository(private val context: Context) {
     val settings: Flow<AppSettings> = context.settingsDataStore.data.map { prefs ->
         AppSettings(
             language = AppLanguage.values().firstOrNull { it.code == prefs[Keys.LANGUAGE] }
-                ?: AppLanguage.SYSTEM,
+                ?: AppLanguage.RU,
             cardTheme = CardTheme.values().firstOrNull { it.name == prefs[Keys.CARD_THEME] }
                 ?: CardTheme.LUEUR,
             saveHistory = prefs[Keys.SAVE_HISTORY] ?: true,

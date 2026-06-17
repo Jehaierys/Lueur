@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8EDD8"/>
+      <stop offset="100%" stop-color="#E8D4A8"/>
+    </linearGradient>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey"/>
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend"/>
+    </filter>
+  </defs>
+  <!-- bg -->
+  <rect width="120" height="200" rx="8" fill="url(#bg)"/>
+  <!-- border double -->
+  <rect x="4" y="4" width="112" height="192" rx="6" fill="none" stroke="#C8A030" stroke-width="1.5"/>
+  <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#C8A030" stroke-width="0.6" opacity="0.6"/>
+  <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="9" font-weight="bold" fill="#C8A030" style="">IV</text>
+  <text x="10" y="25" text-anchor="start" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <text x="110" y="25" text-anchor="end" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <rect x="20" y="80" width="80" height="90" rx="2" fill="#AAA0A0" stroke="#2A1A08" stroke-width="1"/>
+  <path d="M70,80 Q80,60 90,80" fill="#888888" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M30,80 Q40,60 50,80" fill="#888888" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M80,165 L100,110 L110,165 Z" fill="#8B1A1A" stroke="#2A1A08" stroke-width="0.5"/>
+  <path d="M90,165 L108,120 L118,165 Z" fill="#C04000" stroke="#2A1A08" stroke-width="0.5"/>
+  <path d="M60,140 L60,105 M52,112 L68,112 M60,105 L55,135 M60,105 L65,135" fill="none" stroke="#8B1A1A" stroke-width="1.5"/>
+  <circle cx="60" cy="102" r="7" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M53,97 L55,90 L60,95 L65,90 L67,97 Z" fill="#C8A030" stroke="#2A1A08" stroke-width="0.6"/>
+  <line x1="70" y1="112" x2="80" y2="92" stroke="#C8A030" stroke-width="2"/>
+  <circle cx="80" cy="89" r="3" fill="none" stroke="#C8A030" stroke-width="1.5"/>
+  <line x1="75" y1="89" x2="85" y2="89" stroke="#C8A030" stroke-width="1.5"/>
+  <circle cx="50" cy="115" r="4" fill="#C8A030" stroke="#2A1A08" stroke-width="0.6"/>
+  <text x="60" y="186" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="normal" fill="#2A1A08" style="">THE EMPEROR</text>
+
+</svg>

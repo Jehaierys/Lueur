@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8EDD8"/>
+      <stop offset="100%" stop-color="#E8D4A8"/>
+    </linearGradient>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey"/>
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend"/>
+    </filter>
+  </defs>
+  <!-- bg -->
+  <rect width="120" height="200" rx="8" fill="url(#bg)"/>
+  <!-- border double -->
+  <rect x="4" y="4" width="112" height="192" rx="6" fill="none" stroke="#C8A030" stroke-width="1.5"/>
+  <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#C8A030" stroke-width="0.6" opacity="0.6"/>
+  <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="9" font-weight="bold" fill="#C8A030" style="">IX</text>
+  <text x="10" y="25" text-anchor="start" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <text x="110" y="25" text-anchor="end" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <path d="M0,165 L40,80 L80,165 Z" fill="#888888" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M60,165 L90,110 L115,165 Z" fill="#888" stroke="#2A1A08" stroke-width="0.5"/>
+  <circle cx="55" cy="95" r="7" fill="#E0C090" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M55,102 L55,140 M48,112 L62,112" fill="none" stroke="#8080A0" stroke-width="1.5"/>
+  <path d="M48,102 Q42,130 48,148 Q55,155 62,148 Q68,130 62,102 Z" fill="#8080A0" stroke="#2A1A08" stroke-width="0.6"/>
+  <line x1="48" y1="140" x2="42" y2="165" stroke="#2A1A08" stroke-width="2"/>
+  <circle cx="42" cy="163" r="2.5" fill="#2A1A08" stroke="#C8A030" stroke-width="1"/>
+  <rect x="62" y="95" width="12" height="18" rx="2" fill="#E8E0C0" stroke="#2A1A08" stroke-width="0.8"/>
+  <circle cx="68" cy="104" r="4" fill="#C8A030" stroke="#C8A030" stroke-width="1"/>
+<line x1="68" y1="104" x2="73.0" y2="104.0" stroke="#C8A030" stroke-width="0.7"/><line x1="68" y1="104" x2="70.5" y2="108.3" stroke="#C8A030" stroke-width="0.7"/><line x1="68" y1="104" x2="65.5" y2="108.3" stroke="#C8A030" stroke-width="0.7"/><line x1="68" y1="104" x2="63.0" y2="104.0" stroke="#C8A030" stroke-width="0.7"/><line x1="68" y1="104" x2="65.5" y2="99.7" stroke="#C8A030" stroke-width="0.7"/><line x1="68" y1="104" x2="70.5" y2="99.7" stroke="#C8A030" stroke-width="0.7"/><circle cx="20" cy="165" r="1" fill="#FEFAF0"/><circle cx="32" cy="160" r="1" fill="#FEFAF0"/><circle cx="44" cy="155" r="1" fill="#FEFAF0"/><circle cx="56" cy="165" r="1" fill="#FEFAF0"/><circle cx="68" cy="160" r="1" fill="#FEFAF0"/><circle cx="80" cy="155" r="1" fill="#FEFAF0"/><circle cx="92" cy="165" r="1" fill="#FEFAF0"/><circle cx="104" cy="160" r="1" fill="#FEFAF0"/>  <text x="60" y="186" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="normal" fill="#2A1A08" style="">THE HERMIT</text>
+
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8EDD8"/>
+      <stop offset="100%" stop-color="#E8D4A8"/>
+    </linearGradient>
+    <filter id="aged">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grey"/>
+      <feBlend in="SourceGraphic" in2="grey" mode="multiply" result="blend"/>
+    </filter>
+  </defs>
+  <!-- bg -->
+  <rect width="120" height="200" rx="8" fill="url(#bg)"/>
+  <!-- border double -->
+  <rect x="4" y="4" width="112" height="192" rx="6" fill="none" stroke="#C8A030" stroke-width="1.5"/>
+  <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#C8A030" stroke-width="0.6" opacity="0.6"/>
+  <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="9" font-weight="bold" fill="#C8A030" style="">XXI</text>
+  <text x="10" y="25" text-anchor="start" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <text x="110" y="25" text-anchor="end" font-family="serif" font-size="8" font-weight="normal" fill="#C8A030" style="">✦</text>
+  <circle cx="60" cy="95" r="55" fill="none" stroke="#1A5A1A" stroke-width="2"/>
+  <circle cx="60" cy="95" r="48" fill="none" stroke="#1A5A1A" stroke-width="1"/>
+<circle cx="110.0" cy="95.0" r="4" fill="#1A5A1A"/><circle cx="106.2" cy="116.0" r="4" fill="#1A5A1A"/><circle cx="95.4" cy="133.9" r="4" fill="#1A5A1A"/><circle cx="79.1" cy="145.8" r="4" fill="#1A5A1A"/><circle cx="60.0" cy="150.0" r="4" fill="#1A5A1A"/><circle cx="40.9" cy="145.8" r="4" fill="#1A5A1A"/><circle cx="24.6" cy="133.9" r="4" fill="#1A5A1A"/><circle cx="13.8" cy="116.0" r="4" fill="#1A5A1A"/><circle cx="10.0" cy="95.0" r="4" fill="#1A5A1A"/><circle cx="13.8" cy="74.0" r="4" fill="#1A5A1A"/><circle cx="24.6" cy="56.1" r="4" fill="#1A5A1A"/><circle cx="40.9" cy="44.2" r="4" fill="#1A5A1A"/><circle cx="60.0" cy="40.0" r="4" fill="#1A5A1A"/><circle cx="79.1" cy="44.2" r="4" fill="#1A5A1A"/><circle cx="95.4" cy="56.1" r="4" fill="#1A5A1A"/><circle cx="106.2" cy="74.0" r="4" fill="#1A5A1A"/>  <circle cx="60" cy="75" r="7" fill="#FFD0A0" stroke="#2A1A08" stroke-width="0.8"/>
+  <path d="M60,82 L60,108 M50,90 L70,90" fill="none" stroke="#8040C0" stroke-width="1.5"/>
+  <path d="M60,108 L52,120 M60,108 L68,118" fill="none" stroke="#8040C0" stroke-width="1.5"/>
+  <line x1="48" y1="90" x2="40" y2="72" stroke="#8B1A1A" stroke-width="1.5"/>
+  <circle cx="40" cy="70" r="2" fill="#C8A030" stroke="#C8A030" stroke-width="1"/>
+  <line x1="72" y1="90" x2="80" y2="72" stroke="#8B1A1A" stroke-width="1.5"/>
+  <circle cx="80" cy="70" r="2" fill="#C8A030" stroke="#C8A030" stroke-width="1"/>
+  <path d="M50,82 Q60,88 70,82" fill="none" stroke="#C080FF" stroke-width="2"/>
+  <path d="M5,15 Q15,12 18,22 Q12,25 5,15" fill="#E0C080" stroke="#2A1A08" stroke-width="0.5"/>
+  <circle cx="108" cy="20" r="7" fill="#8B1A1A" stroke="#2A1A08" stroke-width="0.5"/>
+  <path d="M5,168 Q10,156 20,168 Q15,174 5,168" fill="#C8A030" stroke="#2A1A08" stroke-width="0.5"/>
+  <circle cx="106" cy="168" r="7" fill="#C08030" stroke="#2A1A08" stroke-width="0.5"/>
+  <text x="60" y="186" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="normal" fill="#2A1A08" style="">THE WORLD</text>
+
+</svg>
